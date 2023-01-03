@@ -1,0 +1,496 @@
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0;
+}
+
+h1 {
+  width: 100%;
+  height: 100%;
+}
+
+.wrap {
+  left: 0;
+  bottom: 40px;
+  width: 288px;
+  height: 132px;
+  overflow: hidden;
+  font-size: 12px;
+  font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;
+  line-height: 1.5;
+}
+
+.info .title {
+  padding: 5px 0 0 10px;
+  height: 30px;
+  background: #eee;
+  border-bottom: 1px solid #ddd;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.info .body {
+  position: relative;
+  overflow: scroll;
+}
+
+.info .desc {
+  position: relative;
+  margin: 13px 0 0 90px;
+  height: 75px;
+}
+
+.desc .ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.info .img {
+  position: absolute;
+  top: 6px;
+  left: 5px;
+  width: 73px;
+  height: 71px;
+  border: 1px solid #ddd;
+  color: #888;
+  overflow: hidden;
+}
+
+.radius_border {
+  border: 1px solid #919191;
+  border-radius: 5px;
+}
+
+.custom_typecontrol {
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  width: 30px;
+  height: 30px;
+  z-index: 1;
+  font-size: 12px;
+  font-family: 'Malgun Gothic', '맑은 고딕', sans-serif;
+}
+
+.custom_typecontrol span {
+  display: inline;
+  width: 30px;
+  height: 30px;
+  float: left;
+  text-align: center;
+  border-radius: 5px;
+  line-height: 30px;
+  cursor: pointer;
+}
+
+.custom_typecontrol .selected_btn {
+  color: #fff;
+  background: linear-gradient(#425470, #5b6d8a);
+}
+
+.custom_typecontrol .selected_btn:hover {
+  color: #fff;
+}
+
+.custom_typecontrol .btn {
+  background: linear-gradient(#fff, #e6e6e6);
+}
+
+.custom_typecontrol .btn:hover {
+  background: #f5f5f5;
+  background: linear-gradient(#f5f5f5, #e3e3e3);
+}
+
+.custom_typecontrol .btn:active {
+  background: #e6e6e6;
+  background: linear-gradient(#e6e6e6, #fff);
+}
+
+.label {
+  margin-bottom: -30px;
+}
+
+.label * {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.label .left {
+  background: url("https://t1.daumcdn.net/localimg/localimages/07/2011/map/storeview/tip_l.png") no-repeat;
+  display: inline-block;
+  height: 24px;
+  overflow: hidden;
+  vertical-align: top;
+  width: 7px;
+}
+
+.label .center {
+  background: url("https://t1.daumcdn.net/localimg/localimages/07/2011/map/storeview/tip_bg.png") repeat-x;
+  display: inline-block;
+  height: 24px;
+  font-size: 12px;
+  line-height: 24px;
+}
+
+.label .right {
+  background: url("https://t1.daumcdn.net/localimg/localimages/07/2011/map/storeview/tip_r.png") -1px 0 no-repeat;
+  display: inline-block;
+  height: 24px;
+  overflow: hidden;
+  width: 6px;
+}
+
+
+.menu {
+  display: block;
+  overflow: scroll;
+  /* overflow: hidden; */
+  width: 200px;
+  background-color: #142239;
+  color: #fff;
+  transition: all 0.5s ease;
+  border-radius: 20px;
+  padding: 10px;
+  box-sizing: border-box;
+  position: absolute;
+
+  z-index: 2;
+  max-height: 90vh;
+  /* Limit the size of the menu that can be expanded */
+  top: 10px;
+  left: 10px;
+}
+
+.menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu a,
+.menu>label {
+  display: block;
+  height: 25px;
+  padding: 8px;
+  cursor: pointer;
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.5s ease;
+}
+
+
+.menu a:hover {
+  color: #000;
+}
+
+.menu ul li:hover,
+.menu>label:hover {
+  background-color: #fff;
+  color: #000;
+  border-radius: 10px;
+}
+
+.menu div {
+  position: absolute;
+  left: 50px;
+  line-height: 1.5;
+  font-size: 1em;
+  font-family: 'Noto Sans KR';
+  padding: 0 0 0 20px;
+
+
+}
+
+#expand-menu {
+  display: none;
+}
+
+#expand-menu:checked~ul {
+  display: block;
+  height: auto;
+  transition: all 2s ease;
+}
+
+.menu ::before {
+  font-family: 'Material Icons';
+  font-size: 1.5em;
+  float: left;
+  clear: left;
+}
+
+.menu label::before {
+  content: '\e5d2';
+}
+
+.menu li:nth-child(1) a::before {
+  content: '\e88e';
+}
+
+.menu li:nth-child(2) a::before {
+  content: '\e8b6';
+}
+
+.menu li:nth-child(3) a::before {
+  content: '\e52d';
+}
+
+.menu li:nth-child(4) a::before {
+  content: '\e541';
+}
+
+.menu li:nth-child(5) a::before {
+  content: '\e8ad';
+}
+
+.menu li:nth-child(6) a::before {
+  content: '\f8d9';
+}
+
+.menu li:nth-child(7) a::before {
+  content: '\e84f';
+}
+
+.menu li {
+  cursor: pointer;
+
+}
+
+.menu a {
+  display: block;
+  padding: 10px;
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.5s ease;
+  border-radius: 20px;
+}
+
+@media screen and (max-width:500px) {
+  .menu {
+    width: 60px;
+
+  }
+}
+
+@media screen and (max-width:560px) {
+  .menu #expand-menu:not(:checked)~ul {
+    display: none;
+  }
+}
+
+#expand-menu:checked~.menu {
+  display: block;
+}
+
+.menu a:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+@media(max-width: 600px) {
+  .menu div {
+    font-size: 0;
+    visibility: hidden;
+  }
+}
+
+.menu #expand-menu:not(:checked)~ul {
+  /* 데스크탑 화면에서도 메뉴를 접었더 펼칠 수 있음 */
+  display: none;
+  transition: all 5s ease;
+}
+
+
+#mapwrap {
+  position: relative;
+  overflow: hidden;
+}
+
+.category,
+.category * {
+  margin: 0;
+  padding: 0;
+  color: #000;
+}
+
+.category {
+  position: absolute;
+  overflow: hidden;
+  top: 10px;
+  left: 10px;
+  width: 150px;
+  height: 50px;
+  z-index: 10;
+  border: 1px solid black;
+  font-family: 'Malgun Gothic', '맑은 고딕', sans-serif;
+  font-size: 12px;
+  text-align: center;
+  background-color: #fff;
+}
+
+.category .menu_selected {
+  background: #FF5F4A;
+  color: #fff;
+  border-left: 1px solid #915B2F;
+  border-right: 1px solid #915B2F;
+  margin: 0 -1px;
+}
+
+.category li {
+  list-style: none;
+  float: left;
+  width: 50px;
+  height: 45px;
+  padding-top: 5px;
+  cursor: pointer;
+}
+
+.category .ico_comm {
+  display: block;
+  margin: 0 auto 2px;
+  width: 22px;
+  height: 26px;
+  background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/category.png') no-repeat;
+}
+
+.category .ico_coffee {
+  background-position: -10px 0;
+}
+
+.category .ico_print {
+  background-position: -10px -36px;
+}
+
+.category .ico_studyroom {
+  background-position: -10px -72px;
+}
+
+/* 1시방향 버튼 디자인 */
+
+.radius_border {
+  border: 1px solid #919191;
+  border-radius: 7px;
+}
+
+.custom_typecontrol {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  overflow: hidden;
+  width: 130px;
+  height: 30px;
+  margin: 0;
+  padding: 0;
+  z-index: 1;
+  font-size: 12px;
+  font-family: 'Malgun Gothic', '맑은 고딕', sans-serif;
+}
+
+.custom_typecontrol span {
+  display: block;
+  width: 65px;
+  height: 30px;
+  float: left;
+  text-align: center;
+  line-height: 30px;
+  cursor: pointer;
+}
+
+.custom_typecontrol .btn {
+  background: #fff;
+  background: linear-gradient(#fff, #e6e6e6);
+}
+
+.custom_typecontrol .btn:hover {
+  background: #f5f5f5;
+  background: linear-gradient(#f5f5f5, #e3e3e3);
+}
+
+.custom_typecontrol .btn:active {
+  background: #e6e6e6;
+  background: linear-gradient(#e6e6e6, #fff);
+}
+
+.custom_typecontrol .selected_btn {
+  color: #fff;
+  background: #425470;
+  background: linear-gradient(#425470, #5b6d8a);
+}
+
+.custom_typecontrol .selected_btn:hover {
+  color: #fff;
+}
+
+.custom_zoomcontrol {
+  position: absolute;
+  top: 50px;
+  right: 10px;
+  width: 36px;
+  height: 40px;
+  overflow: hidden;
+  z-index: 1;
+  background-color: #f5f5f5;
+}
+
+.custom_location {
+  position: absolute;
+  top: 100px;
+  right: 10px;
+  width: 36px;
+  height: 40px;
+  overflow: hidden;
+  z-index: 1;
+  background-color: #f5f5f5;
+}
+
+.custom_location span {
+  display: block;
+  width: 36px;
+  height: 40px;
+  text-align: center;
+  cursor: pointer;
+
+}
+
+.custom_location span img {
+  width: 20px;
+  height: 20px;
+  padding: 10px 0;
+  border: none;
+}
+
+.custom_zoomcontrol span {
+  display: block;
+  width: 36px;
+  height: 40px;
+  text-align: center;
+  cursor: pointer;
+
+}
+
+.custom_zoomcontrol span img {
+  width: 25px;
+  height: 25px;
+  padding: 8px 0;
+  border: none;
+}
+
+
+.custom_zoomcontrol:active {
+  background-color: #425470;
+  color: #fff;
+}
+
+.custom_zoomcontrol span:first-child {
+  border-bottom: 1px solid #bfbfbf;
+}
+
+/* /// */
+
+#container {
+  overflow: hidden;
+  height: 300px;
+  position: relative;
+}
