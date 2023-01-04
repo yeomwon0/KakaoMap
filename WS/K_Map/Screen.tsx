@@ -84,6 +84,7 @@ export const Screen = ({_state, _name}: any) => {
                   />
                   <View>
                     <Text style={modalstyles.largeUnitTextnum}>{data.name.split(" ")[0]}</Text>
+                    {/* <Text style={modalstyles.largeUnitTextnum}>{data.name}</Text> */}
                     <Text style={modalstyles.largeUnitText2}>{data.address}</Text>
                     <Text style={modalstyles.largeUnitText3}>
                       -자동증명 발급기
