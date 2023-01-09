@@ -6,6 +6,7 @@ import Geolocation from 'react-native-geolocation-service'
 import Search from "./Search";
 import Bori from "./Bori";
 import { Screen } from "./Screen";
+import { URL } from "../Ws36";
 
 function KMap({webviewRef}:any) {
   
@@ -32,7 +33,7 @@ function KMap({webviewRef}:any) {
 const sendMessage = async () => {
   let getData:any;
 
-  await fetch("https://bc1b-2001-2d8-6885-ea72-c09a-4668-8b28-3036.jp.ngrok.io/borimap")
+  await fetch(`${URL}/borimap`)
   .then((response) => response.json())
   .then((data) => {
     getData = data

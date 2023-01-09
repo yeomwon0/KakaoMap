@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Button, Dimensions, StyleSheet } from "react-native";
 import { AutocompleteDropdown } from 'react-native-autocomplete-dropdown'
 import Icon from 'react-native-vector-icons/AntDesign';
+import { URL } from "../Ws36";
 
 const WIDTH = Dimensions.get('window').width;
 const HEIGHT = Dimensions.get('window').height;
@@ -24,7 +25,7 @@ function Search({webviewRef, state}:any )
     }, [state])
 
     const searchMessage = () => {    
-    fetch("https://bc1b-2001-2d8-6885-ea72-c09a-4668-8b28-3036.jp.ngrok.io/borimap")
+    fetch(`${URL}/borimap`)
     .then((response) => response.json())
     .then((data) => {
         const getData = data

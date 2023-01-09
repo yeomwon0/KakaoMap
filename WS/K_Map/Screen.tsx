@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {Modal, Text, Pressable, View, ImageBackground, Linking} from 'react-native';
+import { URL } from '../Ws36';
 import { modalstyles } from './styles/modalstyles';
 
 export const Screen = ({_state, _name}: any) => {
@@ -29,7 +30,7 @@ export const Screen = ({_state, _name}: any) => {
 
   const loadList = () => {
     fetch(
-      'https://bc1b-2001-2d8-6885-ea72-c09a-4668-8b28-3036.jp.ngrok.io/borimap',
+      `${URL}/borimap`,
     )
       .then(response => response.json())
       .then(data => {
@@ -83,7 +84,7 @@ export const Screen = ({_state, _name}: any) => {
                     style={modalstyles.image}
                   />
                   <View>
-                    <Text style={modalstyles.largeUnitTextnum}>{data.name.split(" ")[0]}</Text>
+                    <Text style={modalstyles.largeUnitTextnum}>{data.name}</Text>
                     {/* <Text style={modalstyles.largeUnitTextnum}>{data.name}</Text> */}
                     <Text style={modalstyles.largeUnitText2}>{data.address}</Text>
                     <Text style={modalstyles.largeUnitText3}>
