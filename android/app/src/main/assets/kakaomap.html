@@ -311,7 +311,8 @@
       }
       else if (latlng[0].picket == "location") {
         close()
-        panTo(latlng[1].latitude, latlng[1].longtitude, latlng[1].name)
+        panTo(latlng[1].latitude, latlng[1].longtitude)
+        window.ReactNativeWebView.postMessage(latlng[1].name);
       }
       else if (latlng[0].picket == "direction") {
         direction(latlng[1]);
@@ -418,10 +419,9 @@
       marker_direction = document.getElementById("left");
     }
 
-    function panTo(lat, lng, name) {
+    function panTo(lat, lng) {
       var moveLatLon = new kakao.maps.LatLng(lat, lng)
       map.panTo(moveLatLon);
-      var mk = marker_arr[name]
     }
 
     function mark(lat, lng, name, image, addr) {

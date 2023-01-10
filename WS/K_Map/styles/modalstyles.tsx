@@ -1,4 +1,5 @@
 import { Dimensions, StyleSheet } from "react-native";
+import { Colors } from "react-native/Libraries/NewAppScreen";
 
 export{modalstyles}
 
@@ -15,7 +16,9 @@ const modalstyles = StyleSheet.create({
     modalView: {
       marginTop: 15,
       marginBottom: 15,
-      backgroundColor: 'rgba(7, 9, 12,0.78)',
+      backgroundColor: 'rgba(255, 255, 255, 0.8)',
+      borderColor : "black",
+      borderWidth : 2,
       borderRadius: 20,
       padding: 5,
       width: width - 50,
@@ -48,47 +51,52 @@ const modalstyles = StyleSheet.create({
       fontWeight: 'bold',
     },
     largeUnitText: {
-      fontSize: 30,
-      color: 'white',
+      fontSize: 40,
+      color: 'black',
       fontWeight: 'bold',
       width:200
     },
     largeUnitText2: {
       fontSize: 20,
-      color: 'white',
+      color: 'black',
       fontWeight: 'bold',
       width: 200,
     },
-    largeUnitText3: {
-      fontSize: 15,
-      color: 'white',
-    },
     largeUnitTextnum: {
-      fontSize: 35,
-      color: 'white',
+      fontWeight: 'bold',
+      width:180,
+      fontSize: 25,
+      color: 'black',
     },
     subunitText: {
       marginBottom: 5,
       fontSize: 15,
-      color: 'white',
+      color: 'black',
       textAlign: 'left',
       marginLeft: 11,
     },
+    description_text: {
+      marginBottom: 5,
+      fontSize: 15,
+      color: 'black',
+      textAlign: 'left',
+      marginLeft: 11,
+      marginRight: 20
+    },
     image: {
-      width: width - 220,
-      height: height - 500,
+      width: width - 240,
+      height: height - 580,
       marginLeft: 10,
       marginRight: 10,
     },
     phonbtn: {
-      textAlign: 'center',
-      width: 200,
+      textAlign: 'left',
       alignItems: 'flex-end',
     },
     subunitText2: {
       marginBottom: 20,
       fontSize: 23,
-      color: 'white',
+      color: 'black',
       textAlign: 'left',
       marginLeft: 11,
       fontWeight: 'bold',

@@ -78,10 +78,10 @@ function Search({webviewRef, state}:any )
             for(let i of data){
                 if(temp.id === i.id)
                 {                
-                    const data = {
+                    const _data = {
                         picket : 'location'
                     }
-                    latlng.push(data)
+                    latlng.push(_data)
                     latlng.push(i)
                 }
             }
@@ -98,7 +98,7 @@ function Search({webviewRef, state}:any )
         {
         _state ? (
             <AutocompleteDropdown                
-                suggestionsListContainerStyle = {style.liststyle}
+                suggestionsListContainerStyle = {{ opacity: 0.5}}
                 textInputProps ={{
                     placeholder: '학과명이나 건물정보를 입력해주세요',
                 }}
@@ -123,11 +123,4 @@ function Search({webviewRef, state}:any )
     )
 }
 export default Search;
-
-const style = StyleSheet.create({
-    liststyle: {
-        opacity: 0.5,
-    }
-})
-
 

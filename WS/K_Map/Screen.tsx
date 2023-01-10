@@ -1,16 +1,22 @@
 import React, {useEffect, useState} from 'react';
-import {Modal, Text, Pressable, View, ImageBackground, Linking} from 'react-native';
-import { URL } from '../Ws36';
-import { modalstyles } from './styles/modalstyles';
+import {
+  Modal,
+  Text,
+  Pressable,
+  View,
+  ImageBackground,
+  Linking,
+} from 'react-native';
+import {URL} from '../Ws36';
+import {modalstyles} from './styles/modalstyles';
 
 export const Screen = ({_state, _name}: any) => {
   const [state, setState] = useState<boolean>(true);
   const [data, setData] = useState<any[]>([]);
   const [list, setList] = useState<any[]>([]);
+  const [text, setText] = useState<any[]>([]);
   const [description, setDescription] = useState<any[]>([]);
-  const name:string = _name;
-
-  const num1: string = '01092501850';
+  const name: string = _name;
 
   useEffect(() => {
     setState(current => !current);
@@ -18,7 +24,7 @@ export const Screen = ({_state, _name}: any) => {
 
   useEffect(() => {
     showdata();
-  }, [state])
+  }, [state]);
 
   const onPress = () => {
     setState(current => !current);
@@ -29,9 +35,7 @@ export const Screen = ({_state, _name}: any) => {
   }, []);
 
   const loadList = () => {
-    fetch(
-      `${URL}/borimap`,
-    )
+    fetch(`${URL}/borimap`)
       .then(response => response.json())
       .then(data => {
         const getData = data;
@@ -40,15 +44,50 @@ export const Screen = ({_state, _name}: any) => {
   };
 
   const showdata = () => {
-    for(let d of list)
-    {
-        if(d.name === name)
-        {
-            setData(d);
-            const str = d.description;
-            setDescription(str.split("@"))
-        }
+    for (let d of list) {
+      if (d.name === name) {
+        setData(d);
+        setText(d.name.split(" "));
+        const str = d.description;
+        setDescription(str.split('@'));
+      }
     }
+  };
+
+  const Screen_View = (a: number) => {
+    const desc_arr = description[a].split('#');
+    return (
+      <View key={a} style={{flexDirection: 'row'}}>
+        <Text style={modalstyles.subunitText}>- {desc_arr[0]}</Text>
+        <View>{description_view(desc_arr)}</View>
+      </View>
+    );
+  };
+
+  const description_view = (desc_arr: Array<String>) => {
+    let d_arr = [];
+    for (let i = 1; i < desc_arr.length; i++) {
+      const tel_arr = desc_arr[i].split('$')
+      d_arr.push(
+        <View key={i} style={{flexDirection:'row'}}>
+          <Text style={modalstyles.description_text}>{tel_arr[0]}</Text>
+          <Pressable
+            style={modalstyles.phonbtn}
+            onPress={() => Linking.openURL(`tel:042${tel_arr[1]}`)}>
+            <Text style={{color: '#8181F7'}}>{tel_arr[1]}</Text>
+          </Pressable>
+        </View>
+      );
+    }
+    return d_arr;
+  };
+
+  function Screen() {
+    let arr: any = [];
+    for (let ab = 0; ab < description.length; ab++) {
+      arr.push(Screen_View(ab));
+    }
+    return arr;
   }
 
   return (
@@ -66,7 +105,9 @@ export const Screen = ({_state, _name}: any) => {
                 <View style={modalstyles.modalTopView}>
                   <View style={modalstyles.buttonOutView}>
                     <View style={{alignItems: 'flex-start', flex: 1}}>
-                      <Text style={modalstyles.largeUnitText}>{_name}</Text>
+                      <Text style={modalstyles.largeUnitText}>
+                        {text[0]}
+                      </Text>
                     </View>
                     <View style={{alignItems: 'flex-end', flex: 1}}>
                       <Pressable
@@ -84,11 +125,11 @@ export const Screen = ({_state, _name}: any) => {
                     style={modalstyles.image}
                   />
                   <View>
-                    <Text style={modalstyles.largeUnitTextnum}>{data.name}</Text>
-                    {/* <Text style={modalstyles.largeUnitTextnum}>{data.name}</Text> */}
-                    <Text style={modalstyles.largeUnitText2}>{data.address}</Text>
-                    <Text style={modalstyles.largeUnitText3}>
-                      -자동증명 발급기
+                    <Text style={modalstyles.largeUnitTextnum}>
+                      {text[1]}
+                    </Text>
+                    <Text style={modalstyles.largeUnitText2}>
+                      {data.address}
                     </Text>
                   </View>
                 </View>
@@ -97,43 +138,14 @@ export const Screen = ({_state, _name}: any) => {
                     textAlign: 'center',
                     color: 'white',
                   }}>
-                  _____________________________________________
+                  <Text style={{color:"black"}}>______________________________________________</Text>
                 </Text>
-                <Text style={modalstyles.subunitText2}>층별 및 연락처</Text>
-                {/* ------------------------------------------------------------------------------------------- */}
-                <View style={{flexDirection: 'row'}}>
-                  <Text style={modalstyles.subunitText}>-{description[0]}</Text>
-                  <Pressable
-                    style={modalstyles.phonbtn}
-                    onPress={() => Linking.openURL(`tel:${num1}`)}>
-                    <Text style={{color: 'white'}}>{num1}</Text>
-                  </Pressable>
-                </View>
-                <View style={{flexDirection: 'row'}}>
-                  <Text style={modalstyles.subunitText}>-{description[1]}</Text>
-                  <Pressable
-                    style={modalstyles.phonbtn}
-                    onPress={() => Linking.openURL(`tel:${num1}`)}>
-                    <Text style={{color: 'white'}}>{num1}</Text>
-                  </Pressable>
-                </View>
-                <View style={{flexDirection: 'row'}}>
-                  <Text style={modalstyles.subunitText}>-{description[2]}</Text>
-                  <Pressable
-                    style={modalstyles.phonbtn}
-                    onPress={() => Linking.openURL(`tel:${num1}`)}>
-                    <Text style={{color: 'white'}}>{num1}</Text>
-                  </Pressable>
-                </View>
-                <View style={{flexDirection: 'row'}}>
-                  <Text style={modalstyles.subunitText}>-{description[3]}</Text>
-                  <Pressable
-                    style={modalstyles.phonbtn}
-                    onPress={() => Linking.openURL(`tel:${num1}`)}>
-                    <Text style={{color: 'white'}}>{num1}</Text>
-                  </Pressable>
-                </View>
-                {/* ------------------------------------------------------------------------------------------- */}
+                  <Text style={modalstyles.subunitText2}>
+                    층별 시설 및 학과
+                  </Text>
+                  {/* ------------------------------------------------------------------------------------------- */}
+                  {Screen()}
+                  {/* ------------------------------------------------------------------------------------------- */}
               </View>
             </View>
           </Modal>
@@ -142,4 +154,3 @@ export const Screen = ({_state, _name}: any) => {
     </>
   );
 };
-
